@@ -1,0 +1,975 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Trip Mai Melali - Fast Boat Padangbai</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&family=Playfair+Display:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #0a6e3f;
+            --secondary: #f39c12;
+            --accent: #2980b9;
+            --light: #f8f9fa;
+            --dark: #2c3e50;
+            --sand: #e8c99b;
+            --ocean: #3498db;
+            --coral: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f9f5f0;
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><rect fill="none" stroke="%23d4b483" stroke-width="0.5" x="0" y="0" width="100" height="100"/></svg>');
+            position: relative;
+        }
+        
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 400px;
+            background: linear-gradient(to bottom, var(--primary), #0a6e3fcc);
+            z-index: -2;
+        }
+        
+        .container {
+            width: 90%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 15px;
+        }
+        
+        /* Header Styles */
+        header {
+            padding: 20px 0;
+            background-color: rgba(255, 255, 255, 0.9);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        
+        .header-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .logo {
+            width: 70px;
+            height: 70px;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            padding: 5px;
+            border: 3px solid var(--sand);
+        }
+        
+        .logo-text {
+            font-family: 'Playfair Display', serif;
+            font-size: 28px;
+            color: var(--primary);
+            font-weight: 700;
+        }
+        
+        .logo-text span {
+            color: var(--secondary);
+        }
+        
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+        
+        nav a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            font-size: 16px;
+            transition: color 0.3s;
+            position: relative;
+        }
+        
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: var(--secondary);
+            transition: width 0.3s;
+        }
+        
+        nav a:hover {
+            color: var(--primary);
+        }
+        
+        nav a:hover::after {
+            width: 100%;
+        }
+        
+        .cta-button {
+            background: linear-gradient(to right, var(--secondary), #e67e22);
+            color: white;
+            border: none;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 4px 10px rgba(243, 156, 18, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(243, 156, 18, 0.4);
+        }
+        
+        /* Hero Section */
+        .hero {
+            padding: 100px 0;
+            color: white;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('https://images.unsplash.com/photo-1534008897995-27a23e859048?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1974&q=80') center/cover no-repeat;
+            background-attachment: fixed;
+            opacity: 0.7;
+            z-index: -1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 3.5rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 30px;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+        
+        .hero-buttons {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .btn-outline {
+            background: transparent;
+            border: 2px solid white;
+            color: white;
+            padding: 10px 25px;
+            border-radius: 30px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .btn-outline:hover {
+            background: white;
+            color: var(--primary);
+        }
+        
+        /* Section Styles */
+        section {
+            padding: 80px 0;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+        
+        .section-title h2 {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.5rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--secondary);
+            border-radius: 2px;
+        }
+        
+        /* Operator Section */
+        .operators-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .operator-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+        
+        .operator-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.15);
+        }
+        
+        .operator-img {
+            height: 200px;
+            width: 100%;
+            object-fit: cover;
+        }
+        
+        .operator-content {
+            padding: 20px;
+        }
+        
+        .operator-content h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .operator-price {
+            font-size: 1.2rem;
+            color: var(--coral);
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        
+        .operator-destinations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 15px 0;
+        }
+        
+        .destination-tag {
+            background: #e8f4fc;
+            color: var(--accent);
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+        }
+        
+        /* Routes Section */
+        .routes-section {
+            background: linear-gradient(to bottom, #f9f5f0, #e8f4fc);
+        }
+        
+        .route-map {
+            max-width: 100%;
+            margin: 30px auto;
+            display: block;
+            border-radius: 10px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .route-info {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 40px;
+        }
+        
+        .route-card {
+            background: white;
+            padding: 25px;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            text-align: center;
+        }
+        
+        .route-icon {
+            font-size: 2.5rem;
+            color: var(--accent);
+            margin-bottom: 20px;
+        }
+        
+        /* Taxi & Snorkeling */
+        .services-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+        }
+        
+        .service-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .service-content {
+            padding: 25px;
+            flex: 1;
+        }
+        
+        .service-content h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .service-price {
+            font-size: 1.3rem;
+            color: var(--coral);
+            font-weight: 700;
+            margin: 15px 0;
+        }
+        
+        /* Booking Section */
+        .booking-section {
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            color: white;
+            text-align: center;
+        }
+        
+        .booking-container {
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .booking-form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .form-group {
+            text-align: left;
+        }
+        
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+        
+        .form-group input, 
+        .form-group select, 
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+        }
+        
+        .full-width {
+            grid-column: 1 / -1;
+        }
+        
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 60px 0 30px;
+        }
+        
+        .footer-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: white;
+            margin-bottom: 15px;
+        }
+        
+        .footer-logo span {
+            color: var(--secondary);
+        }
+        
+        .footer-contact p {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 10px;
+        }
+        
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .social-icon:hover {
+            background: var(--secondary);
+        }
+        
+        .footer-links h4 {
+            color: var(--secondary);
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+        }
+        
+        .footer-links ul {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: #ddd;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: var(--secondary);
+        }
+        
+        .copyright {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        /* Responsive */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .section-title h2 {
+                font-size: 2rem;
+            }
+            
+            .operators-container {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        /* Language Selector */
+        .language-selector {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            z-index: 1000;
+        }
+        
+        .lang-btn {
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            font-size: 1.5rem;
+        }
+        
+        .lang-options {
+            position: absolute;
+            bottom: 70px;
+            right: 0;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            display: none;
+            flex-direction: column;
+            overflow: hidden;
+        }
+        
+        .lang-options.show {
+            display: flex;
+        }
+        
+        .lang-option {
+            padding: 10px 20px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        
+        .lang-option:hover {
+            background: #f5f5f5;
+        }
+        
+        .price-tag {
+            background: var(--secondary);
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            display: inline-block;
+            margin: 5px 0;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container header-container">
+            <div class="logo-container">
+                <div class="logo">MY TRIP MAI MELALI</div>
+                <div class="logo-text">My Trip <span>Mai Melali</span></div>
+            </div>
+            <nav>
+                <ul>
+                    <li><a href="#home">Beranda</a></li>
+                    <li><a href="#operators">Fast Boat</a></li>
+                    <li><a href="#routes">Rute & Destinasi</a></li>
+                    <li><a href="#taxi">Transportasi</a></li>
+                    <li><a href="#snorkeling">Snorkeling</a></li>
+                    <li><a href="#contact">Kontak</a></li>
+                </ul>
+            </nav>
+            <button class="cta-button">Pesan Sekarang</button>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container hero-content">
+            <h1>Pengalaman Perjalanan Terbaik ke Pulau Dewata</h1>
+            <p>Nikmati perjalanan nyaman dengan fast boat dari Padangbai ke Gili Islands dan Senggigi. Layanan transportasi terbaik dengan harga terjangkau dan keamanan terjamin.</p>
+            <div class="hero-buttons">
+                <button class="cta-button">Pesan Tiket Fast Boat</button>
+                <button class="btn-outline">Lihat Paket Wisata</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- Operators Section -->
+    <section id="operators">
+        <div class="container">
+            <div class="section-title">
+                <h2>Operator Fast Boat Padangbai</h2>
+                <p>Pilih operator terbaik untuk perjalanan Anda (Harga mulai Rp 350.000)</p>
+            </div>
+            
+            <div class="operators-container">
+                <!-- Operator 1 -->
+                <div class="operator-card">
+                    <img src="https://i.ibb.co/HpzrZ7N/wijaya-perkasa.jpg" alt="Wijaya Perkasa Fastboat" class="operator-img">
+                    <div class="operator-content">
+                        <h3>Wijaya Perkasa Fastboat</h3>
+                        <p>Operator berpengalaman dengan armada modern dan fasilitas lengkap. Keamanan dan kenyamanan penumpang menjadi prioritas utama.</p>
+                        <div class="operator-price">Rp 350.000 - Rp 500.000</div>
+                        <div class="operator-destinations">
+                            <span class="destination-tag">Padangbai</span>
+                            <span class="destination-tag">Gili Trawangan</span>
+                            <span class="destination-tag">Gili Meno</span>
+                            <span class="destination-tag">Senggigi</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Operator 2 -->
+                <div class="operator-card">
+                    <img src="https://i.ibb.co/M6BqVqR/semaya-one.jpg" alt="Semaya One" class="operator-img">
+                    <div class="operator-content">
+                        <h3>Semaya One</h3>
+                        <p>Kapal cepat dengan desain modern dan staf profesional. Menawarkan pemandangan spektakuler selama perjalanan dengan kenyamanan maksimal.</p>
+                        <div class="operator-price">Rp 400.000 - Rp 550.000</div>
+                        <div class="operator-destinations">
+                            <span class="destination-tag">Padangbai</span>
+                            <span class="destination-tag">Gili Trawangan</span>
+                            <span class="destination-tag">Gili Air</span>
+                            <span class="destination-tag">Bangsal</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Operator 3 -->
+                <div class="operator-card">
+                    <img src="https://i.ibb.co/3rQq3fL/ostina.jpg" alt="Ostina" class="operator-img">
+                    <div class="operator-content">
+                        <h3>Ostina</h3>
+                        <p>Layanan premium dengan kapal ber-AC, toilet bersih, dan minuman gratis. Pengalaman perjalanan tak terlupakan dengan harga terjangkau.</p>
+                        <div class="operator-price">Rp 380.000 - Rp 520.000</div>
+                        <div class="operator-destinations">
+                            <span class="destination-tag">Padangbai</span>
+                            <span class="destination-tag">Gili Meno</span>
+                            <span class="destination-tag">Gili Air</span>
+                            <span class="destination-tag">Senggigi</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Operator 4 -->
+                <div class="operator-card">
+                    <img src="https://i.ibb.co/KqF2LcG/dprabu.jpg" alt="D'prabu" class="operator-img">
+                    <div class="operator-content">
+                        <h3>D'prabu</h3>
+                        <p>Kapal cepat dengan kapasitas besar, ideal untuk kelompok. Layanan tepat waktu dan harga kompetitif untuk semua rute.</p>
+                        <div class="operator-price">Rp 350.000 - Rp 480.000</div>
+                        <div class="operator-destinations">
+                            <span class="destination-tag">Padangbai</span>
+                            <span class="destination-tag">Gili Trawangan</span>
+                            <span class="destination-tag">Gili Air</span>
+                            <span class="destination-tag">Bangsal</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Operator 5 -->
+                <div class="operator-card">
+                    <img src="https://i.ibb.co/Q8Fv1tJ/karuniajaya.jpg" alt="Karuniajaya Lucksury" class="operator-img">
+                    <div class="operator-content">
+                        <h3>Karuniajaya Lucksury</h3>
+                        <p>Armada mewah dengan fasilitas premium. Cocok untuk wisatawan yang mengutamakan kenyamanan dan pengalaman eksklusif.</p>
+                        <div class="operator-price">Rp 450.000 - Rp 650.000</div>
+                        <div class="operator-destinations">
+                            <span class="destination-tag">Padangbai</span>
+                            <span class="destination-tag">Gili Trawangan</span>
+                            <span class="destination-tag">Gili Meno</span>
+                            <span class="destination-tag">Senggigi</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Operator 6 -->
+                <div class="operator-card">
+                    <img src="https://i.ibb.co/7V1R1bq/eka-jaya.jpg" alt="Eka Jaya Fast Boat" class="operator-img">
+                    <div class="operator-content">
+                        <h3>Eka Jaya Fast Boat</h3>
+                        <p>Operator terpercaya sejak 2010 dengan reputasi pelayanan terbaik. Fasilitas lengkap dan kenyamanan maksimal untuk perjalanan Anda.</p>
+                        <div class="operator-price">Rp 370.000 - Rp 520.000</div>
+                        <div class="operator-destinations">
+                            <span class="destination-tag">Padangbai</span>
+                            <span class="destination-tag">Gili Trawangan</span>
+                            <span class="destination-tag">Gili Meno</span>
+                            <span class="destination-tag">Gili Air</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Routes Section -->
+    <section class="routes-section" id="routes">
+        <div class="container">
+            <div class="section-title">
+                <h2>Rute & Destinasi</h2>
+                <p>Jelajahi keindahan Bali dan Lombok dengan rute terbaik</p>
+            </div>
+            
+            <img src="https://i.ibb.co/KFhL0pG/padangbai-map.jpg" alt="Peta Rute Padangbai" class="route-map">
+            
+            <div class="route-info">
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-ship"></i>
+                    </div>
+                    <h3>Padangbai</h3>
+                    <p>Pelabuhan utama di Bali Timur dengan akses mudah ke Gili Islands dan Lombok. Fasilitas lengkap dan pelabuhan yang terorganisir.</p>
+                </div>
+                
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-umbrella-beach"></i>
+                    </div>
+                    <h3>Gili Trawangan</h3>
+                    <p>Pulau terbesar di kepulauan Gili dengan kehidupan malam yang semarak, restoran kelas dunia, dan spot snorkeling terbaik.</p>
+                </div>
+                
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-water"></i>
+                    </div>
+                    <h3>Gili Meno</h3>
+                    <p>Pulau paling tenang dengan pantai berpasir putih dan air jernih. Tempat ideal untuk bulan madu dan relaksasi.</p>
+                </div>
+                
+                <div class="route-card">
+                    <div class="route-icon">
+                        <i class="fas fa-fish"></i>
+                    </div>
+                    <h3>Gili Air</h3>
+                    <p>Perpaduan sempurna antara keramaian Gili Trawangan dan ketenangan Gili Meno. Pulau dengan suasana tradisional.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Taxi & Snorkeling Section -->
+    <section id="taxi">
+        <div class="container">
+            <div class="section-title">
+                <h2>Layanan Tambahan</h2>
+                <p>Lengkapi perjalanan Anda dengan layanan eksklusif kami</p>
+            </div>
+            
+            <div class="services-container">
+                <div class="service-card">
+                    <img src="https://i.ibb.co/pP4DcL6/bali-taxi.jpg" alt="Privat Taxi Bali" class="operator-img">
+                    <div class="service-content">
+                        <h3>Layanan Taxi Pribadi</h3>
+                        <p>Nikmati kenyamanan transportasi pribadi dengan sopir profesional yang berpengalaman. Layanan door-to-door untuk perjalanan Anda di Bali.</p>
+                        <ul>
+                            <li><span class="price-tag">Bandara ke Hotel</span> Rp 300.000 - Rp 500.000</li>
+                            <li><span class="price-tag">Perjalanan Antar Kota</span> Rp 700.000/hari</li>
+                            <li><span class="price-tag">Tour Wisata 8 Jam</span> Rp 1.500.000</li>
+                        </ul>
+                        <div class="service-price">Mulai dari Rp 300.000</div>
+                        <button class="cta-button">Pesan Taxi</button>
+                    </div>
+                </div>
+                
+                <!-- Snorkeling Section -->
+                <div class="service-card" id="snorkeling">
+                    <img src="https://i.ibb.co/4pKXhF6/padangbai-snorkeling.jpg" alt="Snorkeling Padangbai" class="operator-img">
+                    <div class="service-content">
+                        <h3>Paket Snorkeling Padangbai</h3>
+                        <p>Jelajahi keindahan bawah laut Bali dengan paket snorkeling terbaik. Peralatan lengkap dan pemandu profesional.</p>
+                        <ul>
+                            <li><span class="price-tag">Snorkeling Per Jam</span> Rp 300.000/orang</li>
+                            <li><span class="price-tag">Private Snorkeling Trip</span> Rp 1.500.000/boat</li>
+                            <li><span class="price-tag">Paket Keluarga (2D+2A)</span> Rp 1.000.000</li>
+                        </ul>
+                        <div class="service-price">Mulai dari Rp 300.000/jam</div>
+                        <button class="cta-button">Pesan Snorkeling</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Booking Section -->
+    <section class="booking-section">
+        <div class="container booking-container">
+            <div class="section-title">
+                <h2>Pesan Sekarang</h2>
+                <p>Dapatkan penawaran terbaik untuk perjalanan Anda</p>
+            </div>
+            
+            <form class="booking-form">
+                <div class="form-group">
+                    <label for="name">Nama Lengkap</label>
+                    <input type="text" id="name" placeholder="Masukkan nama Anda" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="Masukkan email Anda" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="phone">Nomor Telepon</label>
+                    <input type="tel" id="phone" placeholder="Masukkan nomor telepon" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="service">Layanan</label>
+                    <select id="service" required>
+                        <option value="">Pilih Layanan</option>
+                        <option value="fastboat">Tiket Fast Boat</option>
+                        <option value="taxi">Privat Taxi</option>
+                        <option value="snorkeling">Paket Snorkeling</option>
+                        <option value="tour">Paket Wisata</option>
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="date">Tanggal Perjalanan</label>
+                    <input type="date" id="date" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="passengers">Jumlah Penumpang</label>
+                    <input type="number" id="passengers" min="1" value="1" required>
+                </div>
+                
+                <div class="form-group full-width">
+                    <label for="message">Pesan Tambahan</label>
+                    <textarea id="message" rows="4" placeholder="Pesan khusus atau permintaan tambahan"></textarea>
+                </div>
+                
+                <div class="form-group full-width">
+                    <button type="submit" class="cta-button">Kirim Pesanan</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact">
+        <div class="container">
+            <div class="footer-container">
+                <div class="footer-about">
+                    <div class="footer-logo">My Trip <span>Mai Melali</span></div>
+                    <p>Layanan transportasi dan wisata terpercaya di Bali dengan pengalaman lebih dari 10 tahun melayani wisatawan lokal dan internasional.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-whatsapp"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-tripadvisor"></i></a>
+                    </div>
+                </div>
+                
+                <div class="footer-contact">
+                    <h4>Kontak Kami</h4>
+                    <p><i class="fas fa-map-marker-alt"></i> Jl. Raya Padangbai No. 45, Bali</p>
+                    <p><i class="fas fa-phone"></i> +62 361 1234567</p>
+                    <p><i class="fas fa-envelope"></i> info@mytripmaimelali.com</p>
+                    <p><i class="fas fa-clock"></i> Buka setiap hari: 7:00 - 21:00 WITA</p>
+                </div>
+                
+                <div class="footer-links">
+                    <h4>Tautan Cepat</h4>
+                    <ul>
+                        <li><a href="#home">Beranda</a></li>
+                        <li><a href="#operators">Operator Fast Boat</a></li>
+                        <li><a href="#routes">Rute & Destinasi</a></li>
+                        <li><a href="#taxi">Privat Taxi</a></li>
+                        <li><a href="#snorkeling">Paket Snorkeling</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="copyright">
+                <p>&copy; 2023 My Trip Mai Melali. Semua Hak Dilindungi. | Website by Bali Travel Solutions</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Language Selector -->
+    <div class="language-selector">
+        <button class="lang-btn" id="langBtn"><i class="fas fa-globe"></i></button>
+        <div class="lang-options" id="langOptions">
+            <div class="lang-option" data-lang="id">Bahasa Indonesia</div>
+            <div class="lang-option" data-lang="en">English</div>
+            <div class="lang-option" data-lang="fr">Français</div>
+            <div class="lang-option" data-lang="de">Deutsch</div>
+            <div class="lang-option" data-lang="ja">日本語</div>
+            <div class="lang-option" data-lang="zh">中文</div>
+        </div>
+    </div>
+
+    <script>
+        // Language Selector
+        const langBtn = document.getElementById('langBtn');
+        const langOptions = document.getElementById('langOptions');
+        
+        langBtn.addEventListener('click', () => {
+            langOptions.classList.toggle('show');
+        });
+        
+        // Close language options when clicking outside
+        document.addEventListener('click', (e) => {
+            if (!langBtn.contains(e.target) && !langOptions.contains(e.target)) {
+                langOptions.classList.remove('show');
+            }
+        });
+        
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+                
+                // Close mobile menu if open
+                langOptions.classList.remove('show');
+            });
+        });
+        
+        // Form submission
+        const bookingForm = document.querySelector('.booking-form');
+        bookingForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            alert('Terima kasih! Pesanan Anda telah kami terima. Tim kami akan segera menghubungi Anda untuk konfirmasi.');
+            bookingForm.reset();
+        });
+    </script>
+</body>
+</html>
